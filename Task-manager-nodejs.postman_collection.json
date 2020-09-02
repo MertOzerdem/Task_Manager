@@ -1,0 +1,507 @@
+{
+	"info": {
+		"_postman_id": "6ff893ed-e498-4315-bb5c-cfecb22ca2ae",
+		"name": "Task-manager-nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7331d1c8-de36-4279-b3e3-f4e1fab7606a",
+						"exec": [
+							"if(pm.response.code === 201){\r",
+							"    pm.environment.set('authToken', pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"dummy\",\n    \"email\": \"dummy2@gmail.com\",\n    \"password\": \"dummypass\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f72a62e4-5d08-4eb2-96f0-e410111e7de8",
+						"exec": [
+							"if(pm.response.code === 200){\r",
+							"    pm.environment.set('authToken', pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"dummy@gmail.com\",\r\n    \"password\": \"dummypass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f77bbac-395e-4e03-8fb8-e2c65b2d8fb9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logoutAll user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "69c96484-cddf-49f3-8757-81aee4a7afba",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/logoutAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"logoutAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"description\" : \"aaaaaaaa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload avatar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/C:/Users/m_e_r/OneDrive/Masaüstü/node-course-images/profile-pic.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/users/me/avatar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks with query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks?completed=false&skip=3&limit=5&sortBy=createdAt_desc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "completed",
+							"value": "false"
+						},
+						{
+							"key": "skip",
+							"value": "3"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "sortBy",
+							"value": "createdAt_desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks without query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/users/5f4ba736f7cd593fac70d47b",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"5f4ba736f7cd593fac70d47b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get task",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/tasks/5f4bd4c2cd02c53a5cb85a0a",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"5f4bd4c2cd02c53a5cb85a0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get avatar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"newpaspas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"descriptionUpdated\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tasks/5f4bd29ca04ce844fc88c017",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"5f4bd29ca04ce844fc88c017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tasks/5f4bd5985af72f28acedcbe4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tasks",
+						"5f4bd5985af72f28acedcbe4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete avatar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/me/avatar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "27c5e6ec-8b46-4e9a-b83b-a2bc89ff8b36",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "98317123-aae1-4ac1-9913-ac0f6ac498a5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
