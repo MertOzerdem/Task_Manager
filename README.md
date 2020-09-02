@@ -1,5 +1,6 @@
 # Task_Manager
-nodejs application with mongodb and mongoose
+nodejs application with mongodb and mongoose,
+hosted on heroku
 
 # Base site not implemented(Use postman requests to use api)
 https://mozerdem-task-managment.herokuapp.com/
